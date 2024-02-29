@@ -40,7 +40,6 @@ Conventions
 # and throws spurious errors. Therefore, we disable invalid-name checking.
 # pylint: disable=invalid-name
 
-
 import importlib.util
 import sys
 import os
@@ -1037,7 +1036,7 @@ FEATURES = {
     # .. if user is registering before enrollment start date or after enrollment end date
     # .. toggle_use_cases: open_edx
     # .. toggle_creation_date: 2022-06-06
-    # .. toggle_tickets: 'https://github.com/edx/edx-platform/pull/29538'
+    # .. toggle_tickets: 'https://github.com/openedx/edx-platform/pull/29538'
     'DISABLE_ALLOWED_ENROLLMENT_IF_ENROLLMENT_CLOSED': False,
 
     # .. toggle_name: FEATURES['SEND_LEARNING_CERTIFICATE_LIFECYCLE_EVENTS_TO_BUS']
@@ -3343,8 +3342,15 @@ INSTALLED_APPS = [
 
     # Notifications
     'openedx.core.djangoapps.notifications',
+
     'openedx_events',
+
+    # Learning Core Apps, used by v2 content libraries (content_libraries app)
+    "openedx_learning.core.components",
+    "openedx_learning.core.contents",
+    "openedx_learning.core.publishing",
 ]
+
 
 ######################### CSRF #########################################
 
@@ -5352,13 +5358,6 @@ OUTCOME_SURVEYS_EVENTS_ENABLED = True
 
 ######################## Settings for cancel retirement in Support Tools ########################
 COOL_OFF_DAYS = 14
-
-URLS_2U_LOBS = {
-    'executive_education': 'https://www.edx.org/executive-education',
-    'masters_degree': 'https://www.edx.org/masters',
-    'bachelors_degree': 'https://www.edx.org/bachelors',
-    'boot_camps': 'https://www.edx.org/boot-camps',
-}
 
 ############ Settings for externally hosted executive education courses ############
 EXEC_ED_LANDING_PAGE = "https://www.getsmarter.com/account"
